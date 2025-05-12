@@ -1,76 +1,104 @@
-# 📦 Inventory Management System – Python OOP Project
+# 🛍️ Inventory Management System – Streamlit & CLI (Python OOP Project)
 
-This is a modular, menu-driven **Inventory Management System** built in Python using Object-Oriented Programming principles. The project is designed to demonstrate concepts like **Encapsulation**, **Inheritance**, **Polymorphism**, and **Abstraction** in a real-world application.
+**Developer:** Riaz Hussain  
+**Project Type:** OOP + GUI  
+**Date:** 12 May 2025
 
 ---
 
-## 📁 Project Structure
+## 📦 Overview
+
+This project is a beginner-friendly, modular inventory management system built in Python using Object-Oriented Programming principles. It includes:
+
+- 🖥️ A CLI-based menu system (ideal for console practice)
+- 🌐 A beautiful, responsive web interface built using **Streamlit**
+- 🧠 Demonstrates **Encapsulation**, **Inheritance**, **Polymorphism**, and **Abstraction**
+- 💡 Real-time inventory management for regular and perishable items
+
+---
+
+## 🗂️ Project Structure
 
 ```
-
-INVENTORY\_MANAGEMENT/
+Inventory_Management/
 │
-├── .venv/                     # Virtual environment (managed by uv)
+├── models/
+│   ├── item.py              # Base Item class
+│   ├── perishable.py        # Inherits from Item and adds expiry date
+│   └── inventory.py         # Handles item add/remove/value logic
 │
-├── models/                   # Core object models
-│   ├── **init**.py
-│   ├── inventory.py          # Inventory class (handles item storage and logic)
-│   ├── item.py               # Item base class
-│   └── perishable.py         # PerishableItem class (extends Item)
+├── utils/
+│   └── cli.py               # Command-line interface logic
 │
-├── utils/                    # Utilities and user interface
-│   └── cli.py                # CLI-based MainApp logic
-│
-├── main.py                   # Main entry point for the application
-├── pyproject.toml            # Project dependencies and config (for uv)
-├── uv.lock                   # Locked dependency versions
-├── .python-version           # Python version used
-└── README.md                 # Project documentation (this file)
-
-````
+├── streamlit_app.py         # Streamlit UI (modern, beautiful web app)
+├── main.py                  # CLI entry point
+├── requirements.txt         # Dependency list
+└── README.md                # Project instructions
+```
 
 ---
 
 ## 🚀 Features
 
-- Add regular and perishable items
-- Remove items from the inventory
-- View detailed list of all items
-- Calculate total value of inventory
-- Show expiry date for perishable items
-- User-friendly CLI interface
+- ➕ Add both **Regular** and **Perishable** items
+- 🗑️ Remove items from the inventory
+- 📄 View all items in a formatted list
+- 💰 Show total value of current stock
+- 📆 Track **expiry dates** for perishable products
+- 📊 Live inventory table display in Streamlit
+- 🎨 Modern, emoji-enhanced user interface
 
 ---
 
-## 🧠 OOP Concepts Implemented
+## ⚙️ OOP Concepts Demonstrated
 
-| Principle      | Description                                                                 |
-|----------------|-----------------------------------------------------------------------------|
-| **Encapsulation** | Item data is private and accessed via getter methods                       |
-| **Inheritance**   | PerishableItem inherits from Item and extends its behavior                 |
-| **Polymorphism**  | `get_info()` behaves differently for each class                            |
-| **Abstraction**   | All business logic is separated into classes (`Inventory`, `Item`, etc.)   |
-| **Composition**   | MainApp uses Inventory, which stores a collection of Items                 |
+| OOP Principle   | Usage                                                                 |
+|----------------|------------------------------------------------------------------------|
+| Encapsulation   | Internal item data hidden from direct access                         |
+| Inheritance     | `PerishableItem` inherits from `Item`                                |
+| Polymorphism    | `get_info()` behaves differently for regular vs. perishable items    |
+| Abstraction     | Logic separated into dedicated classes like `Inventory`, `Item`      |
+| Composition     | `MainApp` uses `Inventory` which contains `Item` instances           |
 
 ---
 
-## 💻 How to Run
+## 🧰 Setup Instructions
 
-### If using `uv`:
-```bash
-uv init
-uv run main.py
-````
-
-### Or with standard Python:
+### ▶️ Option 1: Standard Python
 
 ```bash
-python main.py
+uv add -r requirements.txt
+```
+
+If you get a `typing_extensions` error:
+
+```bash
+uv add typing_extensions
 ```
 
 ---
 
-## 📟 Sample Output (CLI)
+## 🖥️ Run the CLI App
+
+```bash
+uv run main.py
+```
+
+You will interact with a numbered menu for inventory management.
+
+---
+
+## 🌐 Run the Streamlit App (GUI)
+
+```bash
+streamlit run streamlit_app.py
+```
+
+Then open the browser at the link shown in terminal to use the web interface.
+
+---
+
+## 🔍 Sample CLI Output
 
 ```
 === INVENTORY MANAGEMENT SYSTEM ===
@@ -80,48 +108,28 @@ python main.py
 4. Show All Items
 5. Show Total Inventory Value
 6. Exit
-Enter your choice: 1
-Enter item name: Sugar
-Enter price (PKR): 85
-Enter quantity: 25
-Item added successfully.
 ```
 
 ---
 
-## ✨ Example: Perishable Item Class
+## 🔧 Planned Enhancements
 
-```python
-class PerishableItem(Item):
-    def __init__(self, name, price, quantity, expiry_date):
-        super().__init__(name, price, quantity)
-        self.__expiry_date = expiry_date
-
-    def get_info(self):
-        return f"{super().get_info()}, Expiry Date: {self.__expiry_date}"
-```
-
-This class shows **inheritance** (from `Item`) and **polymorphism** (overriding `get_info()`).
+- Save/load inventory from file (CSV or JSON)
+- Notifications for expiring items
+- Search bar and filter functionality in UI
+- Add item categories
+- Multi-user support
 
 ---
 
-## 🔧 Future Enhancements
+## 👨‍💻 Author
 
-* Save/load data to JSON or CSV files
-* GUI using Tkinter or PyQt
-* Alerts for expired items
-* User login and authentication
-* Search and filter functionality
+**Riaz Hussain**  
+Python Developer – GIAIC Quarter 3 Assignment  
+Email: *[infosaifideveloper@gmail.com]*
 
 ---
-
-## 👤 Author
-
-**Riaz Hussain**
-Project developed for OOP Viva | May 2025
-Python 3.x | UV-based modular architecture
 
 ## 📜 License
 
-This project is released for educational and learning purposes only.
-
+This project is released for academic and educational use only.

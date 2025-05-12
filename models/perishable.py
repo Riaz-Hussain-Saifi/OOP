@@ -1,12 +1,14 @@
 from models.item import Item
 
-# Inherited class for items that expire
 class PerishableItem(Item):
+    """
+    A subclass of Item that includes an expiry date for items that expire.
+    """
     def __init__(self, name, price, quantity, expiry_date):
-        # Inherit base properties
         super().__init__(name, price, quantity)
-        self.__expiry_date = expiry_date
+        self.expiry_date = expiry_date  # format: YYYY-MM-DD
 
-    # Overriding method for polymorphism
     def get_info(self):
-        return f"{super().get_info()}, Expiry Date: {self.__expiry_date}"
+        # Adds expiry date to base item info
+        base_info = super().get_info()
+        return f"{base_info}, Expiry Date: {self.expiry_date}"
